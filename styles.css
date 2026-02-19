@@ -133,6 +133,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0px 0px 15px 0px;
 }
 
 .logo {
@@ -164,7 +165,7 @@ body {
 .company-role {
   margin: 0 0 0.75rem;
   font-family: 'Raleway', sans-serif;
-  font-size: clamp(1.7rem, 2.8vw, 1.25rem);
+  font-size: clamp(1.4rem, 2.8vw, 1.25rem);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
