@@ -1,0 +1,292 @@
+/* Tonos azul y celeste para el fondo */
+:root {
+  --blue-dark: #1a3a5c;
+  --blue: #2d5a87;
+  --blue-light: #7eb8e0;
+  --celeste: #a8d4f0;
+  --text: #1a1a1a;
+  --transition: 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Fondos difuminados: solo azul y celeste, movimiento tipo nubes */
+.bg-blurs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.blur {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.blur--blue-dark {
+  width: min(70vw, 520px);
+  height: min(70vw, 520px);
+  background: var(--blue-dark);
+  top: 5%;
+  left: -5%;
+  opacity: 0.5;
+  animation-name: cloud-1;
+  animation-duration: 45s;
+}
+
+.blur--blue {
+  width: min(65vw, 480px);
+  height: min(65vw, 480px);
+  background: var(--blue);
+  top: 35%;
+  right: -8%;
+  opacity: 0.48;
+  animation-name: cloud-2;
+  animation-duration: 50s;
+  animation-delay: -12s;
+}
+
+.blur--blue-light {
+  width: min(60vw, 440px);
+  height: min(60vw, 440px);
+  background: var(--blue-light);
+  bottom: 15%;
+  left: -5%;
+  opacity: 0.45;
+  animation-name: cloud-3;
+  animation-duration: 42s;
+  animation-delay: -6s;
+}
+
+.blur--celeste {
+  width: min(55vw, 400px);
+  height: min(55vw, 400px);
+  background: var(--celeste);
+  bottom: 25%;
+  right: 10%;
+  opacity: 0.42;
+  animation-name: cloud-4;
+  animation-duration: 48s;
+  animation-delay: -20s;
+}
+
+/* Movimiento suave tipo nubes (lento, flotante) */
+@keyframes cloud-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(4vw, 5vh) scale(1.05); }
+  50% { transform: translate(-3vw, 8vh) scale(0.98); }
+  75% { transform: translate(6vw, -4vh) scale(1.02); }
+}
+
+@keyframes cloud-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-5vw, -6vh) scale(1.03); }
+  66% { transform: translate(-2vw, 4vh) scale(0.97); }
+}
+
+@keyframes cloud-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5vw, -5vh) scale(0.99); }
+  50% { transform: translate(-4vw, -2vh) scale(1.04); }
+  75% { transform: translate(3vw, 6vh) scale(1.01); }
+}
+
+@keyframes cloud-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-6vw, -5vh) scale(1.06); }
+}
+
+/* Contenedor principal */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  justify-content: center;
+}
+
+/* Logo con efecto hover */
+.logo-wrap {
+  margin: 0 0 1.5rem;
+}
+
+.logo {
+  width: clamp(140px, 35vw, 200px);
+  height: clamp(140px, 35vw, 200px);
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform var(--transition), filter var(--transition), box-shadow var(--transition);
+}
+
+.logo-wrap:hover .logo {
+  transform: scale(1.08);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 40px rgba(26, 58, 92, 0.25);
+}
+
+/* Nombre de la empresa */
+.company-name {
+  margin: 0 0 0.25rem;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: color var(--transition), letter-spacing var(--transition), transform var(--transition);
+}
+
+.company-name:hover {
+  color: var(--blue-dark);
+  letter-spacing: 0.12em;
+  transform: scale(1.02);
+}
+
+.company-role {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color var(--transition), opacity var(--transition);
+}
+
+.company-role:hover {
+  color: var(--blue);
+  opacity: 0.9;
+}
+
+.tagline {
+  margin: 0 0 2.5rem;
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  line-height: 1.45;
+  max-width: 28ch;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.tagline:hover {
+  color: var(--blue-dark);
+  transform: scale(1.02);
+}
+
+/* Sección redes */
+.social-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-heading {
+  margin: 0 0 1rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color var(--transition), letter-spacing var(--transition);
+}
+
+.social-heading:hover {
+  color: var(--blue);
+  letter-spacing: 0.14em;
+}
+
+.social-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: min(260px, 90vw);
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+  border-radius: 999px;
+  border: 2px solid rgba(26, 58, 92, 0.35);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  transition: color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  width: 100%;
+  max-width: 240px;
+}
+
+.social-link:hover {
+  color: var(--blue-dark);
+  background: rgba(126, 184, 224, 0.25);
+  border-color: var(--blue);
+  transform: translateX(6px);
+  box-shadow: 0 4px 16px rgba(26, 58, 92, 0.15);
+}
+
+.social-link:active {
+  transform: translateX(4px) scale(0.98);
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  color: var(--blue-dark);
+}
+
+.social-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.social-link:hover .social-icon {
+  color: var(--blue);
+}
+
+/* Responsive: más espacio en móvil */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.25rem;
+  }
+
+  .social-list {
+    max-width: 100%;
+  }
+
+  .social-link {
+    max-width: none;
+  }
+
+  .blur {
+    filter: blur(80px);
+  }
+}
